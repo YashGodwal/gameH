@@ -1,0 +1,285 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neetu's Love Game</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+            position: relative;
+            color: goldenrod;
+        }
+        h1 {
+            color: goldenrod;
+            margin-top: 20px;
+        }
+        #game-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            cursor: pointer;
+            user-select: none;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes fall {
+            from { transform: translateY(0); }
+            to { transform: translateY(400px); }
+        }
+        #score {
+            font-size: 24px;
+            margin-top: 10px;
+            color: goldenrod;
+            font-weight: bold;
+        }
+        #background-message {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: bold;
+            color: goldenrod;
+            text-shadow: 0 0 20px gold;
+            pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Neetu's Love Catch Game 💖</h1>
+    <div id="background-message">Catch the hearts and feel the love!</div>
+    <div id="game-container"></div>
+    <p id="score">Score: 0</p>
+
+    <script>
+        let score = 0;
+        const gameContainer = document.getElementById("game-container");
+        const scoreDisplay = document.getElementById("score");
+        const backgroundMessage = document.getElementById("background-message");
+        const body = document.body;
+        
+        const messages = [
+            "You're loved ❤️", 
+            "Neetu, you're special! 💕", 
+            "You make my heart race! 💓", 
+            "My heart is yours forever! 😘", 
+            "Catching my love! 💖", 
+            "You are my happiness! 🌸", 
+            "Every heartbeat is for you! 💘", 
+            "Falling for you every second! 💞", 
+            "My world is brighter with you! ☀️", 
+            "You are the magic in my life! ✨",
+            "Forever and always, my love! 💍", 
+            "You are my dream come true! 🌙", 
+            "Your love is my strength! 💪❤️", 
+            "With you, every moment is perfect! 🌹", 
+            "You light up my world! 🔥"
+        ];
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 90 + "%";
+            heart.style.top = "0px";
+            gameContainer.appendChild(heart);
+            
+            heart.addEventListener("click", function () {
+                score++;
+                scoreDisplay.innerText = `Score: ${score}`;
+                heart.remove();
+                
+                // Change background color slightly
+                const randomColor = `rgb(${50 + score * 5}, ${20 + score * 3}, ${20 + score * 2})`;
+                body.style.backgroundColor = randomColor;
+                
+                // Show random loving message in the background with animation
+                const newMessage = messages[Math.floor(Math.random() * messages.length)];
+                backgroundMessage.innerText = newMessage;
+                backgroundMessage.style.opacity = "1";
+                backgroundMessage.style.transform = `scale(${1 + score * 0.05})`;
+                
+                setTimeout(() => {
+                    backgroundMessage.style.opacity = "0.6";
+                    backgroundMessage.style.transform = "scale(1)";
+                }, 1000);
+            });
+            
+            let topPosition = 0;
+            let fallInterval = setInterval(() => {
+                if (topPosition >= 400) {
+                    clearInterval(fallInterval);
+                    heart.remove();
+                } else {
+                    topPosition += 1; 
+                    heart.style.top = topPosition + "px";
+                }
+            }, 50);
+        }
+
+        setInterval(createHeart, 1000);
+    </script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neetu's Love Game</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #222;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+            position: relative;
+            color: goldenrod;
+            margin: 0;
+            overflow: hidden;
+        }
+        h1 {
+            color: goldenrod;
+            margin-top: 10px;
+            font-size: 5vw;
+        }
+        #game-container {
+            position: relative;
+            width: 100%;
+            height: 70vh; /* Adjusts height based on screen size */
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        .heart {
+            position: absolute;
+            font-size: 5vw; /* Scales based on screen width */
+            cursor: pointer;
+            user-select: none;
+            width: 7vw;
+            height: 7vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #score {
+            font-size: 4vw;
+            margin-top: 10px;
+            color: goldenrod;
+            font-weight: bold;
+        }
+        #background-message {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4vw;
+            font-style: italic;
+            font-weight: bold;
+            color: goldenrod;
+            text-shadow: 0 0 20px gold;
+            pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <h1>Neetu's Love Catch Game 💖</h1>
+    <div id="background-message">Catch the hearts and feel the love!</div>
+    <div id="game-container"></div>
+    <p id="score">Score: 0</p>
+
+    <script>
+        let score = 0;
+        const gameContainer = document.getElementById("game-container");
+        const scoreDisplay = document.getElementById("score");
+        const backgroundMessage = document.getElementById("background-message");
+        const body = document.body;
+        
+        const messages = [
+            "You're loved ❤️", 
+            "Neetu, you're special! 💕", 
+            "You make my heart race! 💓", 
+            "My heart is yours forever! 😘", 
+            "Catching my love! 💖", 
+            "You are my happiness! 🌸", 
+            "Every heartbeat is for you! 💘", 
+            "Falling for you every second! 💞", 
+            "My world is brighter with you! ☀️", 
+            "You are the magic in my life! ✨",
+            "Forever and always, my love! 💍", 
+            "You are my dream come true! 🌙", 
+            "Your love is my strength! 💪❤️", 
+            "With you, every moment is perfect! 🌹", 
+            "You light up my world! 🔥"
+        ];
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            heart.style.left = Math.random() * 90 + "%";
+            heart.style.top = "0px";
+            gameContainer.appendChild(heart);
+            
+            heart.addEventListener("click", function () {
+                score++;
+                scoreDisplay.innerText = `Score: ${score}`;
+                heart.remove();
+                
+                // Change background color slightly
+                const randomColor = `rgb(${50 + score * 5}, ${20 + score * 3}, ${20 + score * 2})`;
+                body.style.backgroundColor = randomColor;
+                
+                // Show random loving message in the background with animation
+                const newMessage = messages[Math.floor(Math.random() * messages.length)];
+                backgroundMessage.innerText = newMessage;
+                backgroundMessage.style.opacity = "1";
+                backgroundMessage.style.transform = `scale(${1 + score * 0.05})`;
+                
+                setTimeout(() => {
+                    backgroundMessage.style.opacity = "0.6";
+                    backgroundMessage.style.transform = "scale(1)";
+                }, 1000);
+            });
+            
+            let topPosition = 0;
+            let fallSpeed = window.innerWidth < 600 ? 3 : 2;  // Faster falling on mobile
+            let fallInterval = setInterval(() => {
+                if (topPosition >= gameContainer.clientHeight) {
+                    clearInterval(fallInterval);
+                    heart.remove();
+                } else {
+                    topPosition += fallSpeed;  
+                    heart.style.top = topPosition + "px";
+                }
+            }, 30);
+        }
+
+        setInterval(createHeart, 800); // Increased heart spawn rate for mobile
+    </script>
+</body>
+</html>
